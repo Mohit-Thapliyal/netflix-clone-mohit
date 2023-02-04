@@ -1,11 +1,12 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { DocumentData } from "firebase/firestore";
 import { useRef, useState } from "react";
 import { Movie } from "../typings";
 import Thumbnail from "./Thumbnail";
 
 interface Props {
   title: string;
-  movies: Movie[];
+  movies: Movie[] | DocumentData[];
 }
 
 const Row = ({ title, movies }: Props) => {
@@ -40,7 +41,7 @@ const Row = ({ title, movies }: Props) => {
         >
           {/* Thumbnail */}
           {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
+            <Thumbnail type="small" key={movie.id} movie={movie} />
           ))}
         </div>
         <ChevronRightIcon
